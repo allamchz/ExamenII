@@ -22,11 +22,8 @@ public class MovimientoBancarioActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movimiento_bancario);
-        // Se instancia una cuenta fija
-        cuenta = new Cuenta();
-        cuenta.set_id(1);
-        cuenta.setNumero("22004-444-22");
-        cuenta.setSaldo(100000000);
+        cuenta =(Cuenta) getIntent().getSerializableExtra("cuenta");
+
         TextView cuentaTxt= (TextView)findViewById(R.id.txtCuenta);
         cuentaTxt.setText(cuenta.getNumero());
 

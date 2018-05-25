@@ -1,5 +1,6 @@
 package cgi.una.ac.cr.examenii.entidad;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -7,7 +8,7 @@ import java.util.List;
  * Almacena la cuenta de un cliente (propietario)
  */
 
-public class Cuenta {
+public class Cuenta implements Serializable{
 
     private long _id;
     private double saldo;

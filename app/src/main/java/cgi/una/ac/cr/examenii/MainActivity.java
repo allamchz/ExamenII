@@ -14,6 +14,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import cgi.una.ac.cr.examenii.entidad.Cuenta;
 import cgi.una.ac.cr.examenii.entidad.MovimientoBancario;
 import cgi.una.ac.cr.examenii.service.MovimientoBancarioService;
 
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     MovimientoBancarioService movimientoService;
     ListView listView;
     MovimientoBancarioListAdapter adapter;
+    Cuenta cuenta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         super.onCreate(savedInstanceState);
+        cuenta = new Cuenta();
+        cuenta.set_id(1);
+        cuenta.setNumero("22004-444-22");
+        cuenta.setSaldo(100000000);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -37,7 +43,9 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(MainActivity.this, MovimientoBancarioActivity.class);
+                intent.putExtra("cuenta",cuenta );
                 startActivity(intent);
             }
         });

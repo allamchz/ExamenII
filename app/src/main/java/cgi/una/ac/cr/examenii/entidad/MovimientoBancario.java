@@ -2,6 +2,7 @@ package cgi.una.ac.cr.examenii.entidad;
 
 import android.content.ContentValues;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -12,7 +13,7 @@ import cgi.una.ac.cr.examenii.contract.MovimientoBancarioContract;
  * Registra un movimiento bancario puede ser negativo (Retiro) o positivo ()
  */
 
-public class MovimientoBancario {
+public class MovimientoBancario implements Serializable {
 
     private long _id;
     private Cuenta cuenta;
