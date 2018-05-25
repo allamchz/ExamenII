@@ -16,6 +16,15 @@ public class Cuenta implements Serializable{
     private String propietario;
     private List<MovimientoBancario > movimientoBancarioList;
 
+    public Cuenta(){
+
+    }
+    public Cuenta(long _id, double saldo, String numero, String propietario) {
+        this._id = _id;
+        this.saldo = saldo;
+        this.numero = numero;
+        this.propietario = propietario;
+    }
 
     public long get_id() {
         return _id;
@@ -55,5 +64,10 @@ public class Cuenta implements Serializable{
 
     public void setMovimientoBancarioList(List<MovimientoBancario> movimientoBancarioList) {
         this.movimientoBancarioList = movimientoBancarioList;
+    }
+
+    @Override
+    public String toString() {
+        return numero + " "+ propietario;
     }
 }

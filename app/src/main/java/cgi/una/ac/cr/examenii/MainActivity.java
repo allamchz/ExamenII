@@ -11,7 +11,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import cgi.una.ac.cr.examenii.entidad.Cuenta;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
     MovimientoBancarioListAdapter adapter;
     Cuenta cuenta;
+    TextView txtSaldo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        txtSaldo =(TextView)findViewById(R.id.labelSaldoMonto);
+        DecimalFormat df = new DecimalFormat("₡###,###,###.##");
+        txtSaldo.setText(df.format(cuenta.getSaldo()));
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
         listView=(ListView)findViewById(R.id.listMovimientos);
         movimientoService = new MovimientoBancarioService(this);
-        //dataModels=(ArrayList) movimientoService.findAll();
+
         View header = getLayoutInflater().inflate(R.layout.header_movimiento_bancario, null);
         listView.addHeaderView(header);
 
